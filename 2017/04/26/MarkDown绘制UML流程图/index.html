@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="杂谈,MarkDown," />
+  <meta name="keywords" content="MarkDown,others," />
 
 
 
@@ -93,13 +93,13 @@
 
 
 <meta name="description" content="MarkDown绘制UML流程图">
-<meta name="keywords" content="杂谈,MarkDown">
+<meta name="keywords" content="MarkDown,others">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MarkDown绘制UML流程图">
 <meta property="og:url" content="http://yoursite.com/2017/04/26/MarkDown绘制UML流程图/index.html">
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="MarkDown绘制UML流程图">
-<meta property="og:updated_time" content="2017-04-26T06:33:08.727Z">
+<meta property="og:updated_time" content="2017-04-26T08:23:32.226Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MarkDown绘制UML流程图">
 <meta name="twitter:description" content="MarkDown绘制UML流程图">
@@ -330,9 +330,34 @@
       
 
       
-        <h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><h2 id="流程图语法"><a href="#流程图语法" class="headerlink" title="流程图语法"></a>流程图语法</h2><h3 id="标示流程图"><a href="#标示流程图" class="headerlink" title="标示流程图"></a>标示流程图</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> </div></pre></td></tr></table></figure>
-</code></pre><h3 id="节点定义"><a href="#节点定义" class="headerlink" title="节点定义"></a>节点定义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">st=&gt;start: 开始</div><div class="line">st-&gt;e</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">st=&gt;start</div><div class="line">e=&gt;end</div><div class="line">op1=&gt;operation: My Operation</div><div class="line">sub1=&gt;subroutine: My Subroutine</div><div class="line">cond=&gt;condition: Yes or No?</div><div class="line">io=&gt;inputoutput: catch something...</div><div class="line"></div><div class="line">st-&gt;op1-&gt;cond</div><div class="line">cond(yes)-&gt;io-&gt;e</div><div class="line">cond(no)-&gt;sub1(right)-&gt;op1</div></pre></td></tr></table></figure>
+        <h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p>流程图是表示算法、工作流或流程的一种框图表示，它以不同类型的框代表不同种类的步骤，每两个步骤之间则以箭头连接。这种表示方法便于说明解决已知问题的方法。</p>
+<blockquote>
+<ul>
+<li>处理框（矩形框），表示一般的处理功能</li>
+<li>判断框（菱形框），表示对一个给定的条件进行判断，根据给定的条件是否成立决定如何执行其后的操作。它有一个入口，二个出口</li>
+<li>输入输出框（平行四边形框）</li>
+<li>起止框（圆弧形框），表示流程开始或结束</li>
+<li>流程线（指向线），表示流程的路径和方向</li>
+</ul>
+</blockquote>
+<h2 id="流程图语法"><a href="#流程图语法" class="headerlink" title="流程图语法"></a>流程图语法</h2><h3 id="标示流程图"><a href="#标示流程图" class="headerlink" title="标示流程图"></a>标示流程图</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> </div></pre></td></tr></table></figure>
+</code></pre><h3 id="节点定义"><a href="#节点定义" class="headerlink" title="节点定义"></a>节点定义</h3><h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><blockquote>
+<p><strong> <code>var=&gt;type[: content]</code> </strong></p>
+</blockquote>
+<p>type值:</p>
+<ul>
+<li><em><code>start</code></em> 开始节点</li>
+<li><em><code>end</code></em> 结束节点</li>
+<li><em><code>operation</code></em> 操作节点</li>
+<li><em><code>subroutine</code></em> 子程序节点</li>
+<li><em><code>condition</code></em> 条件节点</li>
+<li><em><code>inputoutput</code></em> 输入输出节点</li>
+</ul>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">st=&gt;start: 开始</div><div class="line">e=&gt;end: 结束</div><div class="line">op1=&gt;operation: 操作1</div><div class="line">op2=&gt;operation: 操作2</div><div class="line">sub1=&gt;subroutine: 子程序1</div><div class="line">cond=&gt;condition: 条件判断1</div><div class="line">c2=&gt;condition: 条件判断2</div><div class="line">io=&gt;inputoutput: 输入输出</div></pre></td></tr></table></figure>
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">    st=&gt;start: 开始</div><div class="line">    e=&gt;end: 结束</div><div class="line">    op1=&gt;operation: 操作1</div><div class="line">    op2=&gt;operation: 操作2</div><div class="line">    sub1=&gt;subroutine: 子程序1</div><div class="line">    cond=&gt;condition: 条件判断1</div><div class="line">    c2=&gt;condition: 条件判断2</div><div class="line">    io=&gt;inputoutput: 输入输出</div><div class="line">    </div><div class="line">    st-&gt;e</div><div class="line">```    </div><div class="line"></div><div class="line">### 节点交互</div><div class="line"></div><div class="line">&gt; ** `node1(pos)-&gt;node2(pos)` **</div><div class="line"></div><div class="line">pos指定下一个节点出现的位置，默认为该节点下方</div><div class="line">* `left`</div><div class="line">* `right`</div><div class="line"></div><div class="line">&gt; ** `cond(yes|no)-&gt;node` **</div><div class="line"></div><div class="line">&gt; ** `cond(yes|no,left|right)-&gt;node` **</div><div class="line"></div><div class="line">### 示例1</div><div class="line"></div><div class="line">    ```flow</div><div class="line">    st=&gt;start: Start</div><div class="line">    e=&gt;end: End</div><div class="line">    op1=&gt;operation: My Operation</div><div class="line">    op2=&gt;operation: Stuff</div><div class="line">    sub1=&gt;subroutine: My Subroutine</div><div class="line">    cond=&gt;condition: Yes or No?</div><div class="line">    c2=&gt;condition: Good idea</div><div class="line">    io=&gt;inputoutput: catch something...</div><div class="line"></div><div class="line">    st-&gt;op1(right)-&gt;cond</div><div class="line">    cond(yes, right)-&gt;c2</div><div class="line">    cond(no)-&gt;sub1(left)-&gt;op1</div><div class="line">    c2(yes)-&gt;io-&gt;e</div><div class="line">    c2(no)-&gt;op2-&gt;e</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">st=&gt;start: Start</div><div class="line">e=&gt;end: End</div><div class="line">op1=&gt;operation: My Operation</div><div class="line">op2=&gt;operation: Stuff</div><div class="line">sub1=&gt;subroutine: My Subroutine</div><div class="line">cond=&gt;condition: Yes or No?</div><div class="line">c2=&gt;condition: Good idea</div><div class="line">io=&gt;inputoutput: catch something...</div><div class="line"></div><div class="line">st-&gt;op1(right)-&gt;cond</div><div class="line">cond(yes, right)-&gt;c2</div><div class="line">cond(no)-&gt;sub1(left)-&gt;op1</div><div class="line">c2(yes)-&gt;io-&gt;e</div><div class="line">c2(no)-&gt;op2-&gt;e</div></pre></td></tr></table></figure>
+<h3 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">st=&gt;start</div><div class="line">e=&gt;end</div><div class="line">op1=&gt;operation: My Operation</div><div class="line">sub1=&gt;subroutine: My Subroutine</div><div class="line">cond=&gt;condition: Yes or No?</div><div class="line">io=&gt;inputoutput: catch something...</div><div class="line"></div><div class="line">st-&gt;op1-&gt;cond</div><div class="line">cond(yes)-&gt;io-&gt;e</div><div class="line">cond(no)-&gt;sub1(right)-&gt;op1</div></pre></td></tr></table></figure>
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">st=&gt;start: 开始</div><div class="line">e=&gt;end: 结束</div><div class="line">op1=&gt;operation: My Operation</div><div class="line">sub1=&gt;subroutine: My Subroutine</div><div class="line">cond=&gt;condition: Yes or No?</div><div class="line">io=&gt;inputoutput: catch something...</div><div class="line"></div><div class="line">st-&gt;op1-&gt;cond</div><div class="line">cond(yes)-&gt;io-&gt;e</div><div class="line">cond(no)-&gt;sub1(right)-&gt;op1</div></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="http://flowchart.js.org/" target="_blank" rel="external">flowchat.js</a></li>
 </ul>
@@ -365,9 +390,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/杂谈/" rel="tag"># 杂谈</a>
-          
             <a href="/tags/MarkDown/" rel="tag"># MarkDown</a>
+          
+            <a href="/tags/others/" rel="tag"># others</a>
           
         </div>
       
@@ -460,7 +485,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -482,7 +507,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -524,7 +549,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#流程图"><span class="nav-number">1.</span> <span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程图语法"><span class="nav-number">2.</span> <span class="nav-text">流程图语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标示流程图"><span class="nav-number">2.1.</span> <span class="nav-text">标示流程图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点定义"><span class="nav-number">2.2.</span> <span class="nav-text">节点定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#流程图"><span class="nav-number">1.</span> <span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程图语法"><span class="nav-number">2.</span> <span class="nav-text">流程图语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标示流程图"><span class="nav-number">2.1.</span> <span class="nav-text">标示流程图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点定义"><span class="nav-number">2.2.</span> <span class="nav-text">节点定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#语法"><span class="nav-number">2.2.1.</span> <span class="nav-text">语法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例2"><span class="nav-number">2.3.</span> <span class="nav-text">示例2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

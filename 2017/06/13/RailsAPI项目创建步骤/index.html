@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Rails API项目创建步骤"/>
+
+
+
+
+  <meta name="keywords" content="rails,rails api," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.4.x" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/06/13/RailsAPI项目创建步骤/"/>
+
+
+<meta name="description" content="Rails API项目创建步骤">
+<meta name="keywords" content="rails,rails api">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rails API项目创建步骤">
+<meta property="og:url" content="http://yoursite.com/2017/06/13/RailsAPI项目创建步骤/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="Rails API项目创建步骤">
+<meta property="og:updated_time" content="2017-06-13T08:12:49.698Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rails API项目创建步骤">
+<meta name="twitter:description" content="Rails API项目创建步骤">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
+
+
+
+
+
+
+
+<script>
+  var CONFIG = {
+    search: false,
+    searchPath: "/search.xml",
+    fancybox: false,
+    toc: true,
+  }
+</script>
+
+
+
+
+  
+
+
+
+    <title> Rails API项目创建步骤 · 我的博客 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">我的博客</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">我的博客</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Rails API项目创建步骤
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          Jun 13, 2017
+        </span>
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Rails-API项目创建步骤"><span class="toc-text">Rails API项目创建步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化API项目"><span class="toc-text">初始化API项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加常用gem"><span class="toc-text">添加常用gem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用RSpec测试"><span class="toc-text">使用RSpec测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#脚手架生成代码"><span class="toc-text">脚手架生成代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API输出"><span class="toc-text">API输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用CROS"><span class="toc-text">启用CROS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API版本化"><span class="toc-text">API版本化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rate-Limiting-and-Throttling"><span class="toc-text">Rate Limiting and Throttling</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API用户验证"><span class="toc-text">API用户验证</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <h2 id="Rails-API项目创建步骤"><a href="#Rails-API项目创建步骤" class="headerlink" title="Rails API项目创建步骤"></a>Rails API项目创建步骤</h2><h3 id="初始化API项目"><a href="#初始化API项目" class="headerlink" title="初始化API项目"></a>初始化API项目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rails new cheche_api <span class="_">-d</span> mysql -M -C -S -J --api</div></pre></td></tr></table></figure>
+<h3 id="添加常用gem"><a href="#添加常用gem" class="headerlink" title="添加常用gem"></a>添加常用gem</h3><p>Gemfile:<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">source <span class="string">'https://gems.ruby-china.org'</span></div><div class="line">...</div><div class="line">  gem <span class="string">'rails-i18n'</span>, <span class="string">'~&gt; 5.0.0'</span></div><div class="line">  gem <span class="string">'jbuilder'</span>, <span class="string">'~&gt; 2.5'</span></div><div class="line">  gem <span class="string">'kaminari'</span></div><div class="line">  gem <span class="string">'ransack'</span></div><div class="line">  gem <span class="string">'schema_validations'</span></div><div class="line">  gem <span class="string">'dotenv-rails'</span></div><div class="line">  gem <span class="string">'def_enum_helper'</span></div><div class="line">  gem <span class="string">'pundit'</span></div><div class="line">  gem <span class="string">'devise'</span></div><div class="line">  gem <span class="string">'devise-i18n'</span></div><div class="line">  gem <span class="string">'devise_custom_authenticatable'</span></div><div class="line"></div><div class="line">  gem <span class="string">'elasticsearch-model'</span></div><div class="line">  gem <span class="string">'elasticsearch-rails'</span></div><div class="line">  </div><div class="line">  gem <span class="string">'redis'</span></div><div class="line">  gem <span class="string">'ruby-kafka'</span></div><div class="line">  </div><div class="line">  group <span class="symbol">:development</span>, <span class="symbol">:test</span> <span class="keyword">do</span></div><div class="line">    gem <span class="string">'byebug'</span>, <span class="symbol">platform:</span> <span class="symbol">:mri</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  group <span class="symbol">:development</span> <span class="keyword">do</span></div><div class="line">    gem <span class="string">'web-console'</span></div><div class="line">    gem <span class="string">'listen'</span>, <span class="string">'~&gt; 3.0.5'</span></div><div class="line">    gem <span class="string">'spring'</span></div><div class="line">    gem <span class="string">'spring-watcher-listen'</span>, <span class="string">'~&gt; 2.0.0'</span></div><div class="line">    gem <span class="string">'pry-rails'</span></div><div class="line">    gem <span class="string">'pry-byebug'</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  group <span class="symbol">:test</span> <span class="keyword">do</span></div><div class="line">    gem <span class="string">'rails-controller-testing'</span></div><div class="line">    gem <span class="string">'minitest-reporters'</span></div><div class="line">    gem <span class="string">'guard'</span></div><div class="line">    gem <span class="string">'guard-minitest'</span></div><div class="line">  <span class="keyword">end</span></div><div class="line">...</div></pre></td></tr></table></figure></p>
+<h3 id="使用RSpec测试"><a href="#使用RSpec测试" class="headerlink" title="使用RSpec测试"></a>使用RSpec测试</h3><p>Gemfile:<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">group <span class="symbol">:development</span>, <span class="symbol">:test</span> <span class="keyword">do</span></div><div class="line">  <span class="comment"># Use RSpec for specs</span></div><div class="line">  gem <span class="string">'rspec-rails'</span>, <span class="string">'&gt;= 3.5.0'</span></div><div class="line"></div><div class="line">  <span class="comment"># Use Factory Girl for generating random test data</span></div><div class="line">  gem <span class="string">'factory_girl_rails'</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<h3 id="脚手架生成代码"><a href="#脚手架生成代码" class="headerlink" title="脚手架生成代码"></a>脚手架生成代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rails g scaffold user name email</div><div class="line">rails db:migrate</div></pre></td></tr></table></figure>
+<h3 id="API输出"><a href="#API输出" class="headerlink" title="API输出"></a>API输出</h3><p>Gemfile:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem &apos;active_model_serializers&apos;</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rails g serializer user</div></pre></td></tr></table></figure>
+<p>app/serializers/user_serializer.rb:<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserSerializer</span> &lt; ActiveModel::Serializer</span></div><div class="line">  attributes <span class="symbol">:id</span>, <span class="symbol">:name</span>, <span class="symbol">:email</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<h3 id="启用CROS"><a href="#启用CROS" class="headerlink" title="启用CROS"></a>启用CROS</h3><p>see: <a href="https://github.com/cyu/rack-cors" target="_blank" rel="external">rack-cors</a></p>
+<p>Gemfile:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem &apos;rack-cors&apos;</div></pre></td></tr></table></figure></p>
+<p>config/application.rb:<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">YourApp</span></span></div><div class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Application</span> &lt; Rails::Application</span></div><div class="line"></div><div class="line">    <span class="comment"># ...</span></div><div class="line"></div><div class="line">    config.middleware.insert_before <span class="number">0</span>, Rack::Cors <span class="keyword">do</span></div><div class="line">      allow <span class="keyword">do</span></div><div class="line">        origins <span class="string">'*'</span></div><div class="line">        resource <span class="string">'*'</span>, <span class="symbol">:headers</span> =&gt; <span class="symbol">:any</span>, <span class="symbol">:methods</span> =&gt; [<span class="symbol">:get</span>, <span class="symbol">:post</span>, <span class="symbol">:options</span>]</div><div class="line">      <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<h3 id="API版本化"><a href="#API版本化" class="headerlink" title="API版本化"></a>API版本化</h3><p>文件目录:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">app/controllers/</div><div class="line">.</div><div class="line">|-- api</div><div class="line">|   `-- v1</div><div class="line">|       |-- api_controller.rb</div><div class="line">|       `-- users_controller.rb</div><div class="line">|-- application_controller.rb</div></pre></td></tr></table></figure></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">  <span class="comment"># app/controllers/api/v1/api_controller.rb</span></div><div class="line">    <span class="class"><span class="keyword">module</span> <span class="title">Api::V1</span></span></div><div class="line">      <span class="class"><span class="keyword">class</span> <span class="title">ApiController</span> &lt; ApplicationController</span></div><div class="line">        <span class="comment"># Generic API stuff here</span></div><div class="line">      <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="comment">#	app/controllers/api/v1/users_controller.rb</span></div><div class="line">    <span class="class"><span class="keyword">module</span> <span class="title">Api::V1</span></span></div><div class="line">      <span class="class"><span class="keyword">class</span> <span class="title">UsersController</span> &lt; ApiController</span></div><div class="line">        <span class="comment"># GET /v1/users</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">index</span></span></div><div class="line">          render <span class="symbol">json:</span> User.all</div><div class="line">        <span class="keyword">end</span></div><div class="line"></div><div class="line">      <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="string">`</span></div></pre></td></tr></table></figure>
+<p>config/routes:<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">constraints <span class="symbol">subdomain:</span> <span class="string">'api'</span> <span class="keyword">do</span></div><div class="line">  scope <span class="class"><span class="keyword">module</span>: '<span class="title">api</span>' <span class="title">do</span></span></div><div class="line">    namespace <span class="symbol">:v1</span> <span class="keyword">do</span></div><div class="line">      resources <span class="symbol">:users</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<h3 id="Rate-Limiting-and-Throttling"><a href="#Rate-Limiting-and-Throttling" class="headerlink" title="Rate Limiting and Throttling"></a>Rate Limiting and Throttling</h3><p>see: <a href="https://github.com/kickstarter/rack-attack" target="_blank" rel="external">rack-attack</a></p>
+<p>Gemfile:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem &apos;rack-attack&apos;</div></pre></td></tr></table></figure></p>
+<p>config/application.rb:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"> config.middleware.use Rack::Attack</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>config/initializers/rack-attack.rb:<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rack::Attack</span></span></div><div class="line"></div><div class="line">  <span class="comment"># `Rack::Attack` is configured to use the `Rails.cache` value by default,</span></div><div class="line">  <span class="comment"># but you can override that by setting the `Rack::Attack.cache.store` value</span></div><div class="line">  Rack::Attack.cache.store = ActiveSupport::Cache::MemoryStore.new</div><div class="line"></div><div class="line">  <span class="comment"># Allow all local traffic</span></div><div class="line">  whitelist(<span class="string">'allow-localhost'</span>) <span class="keyword">do</span> <span class="params">|req|</span></div><div class="line">    <span class="string">'127.0.0.1'</span> == req.ip <span class="params">||</span> <span class="string">'::1'</span> == req.ip</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="comment"># Allow an IP address to make 5 requests every 5 seconds</span></div><div class="line">  throttle(<span class="string">'req/ip'</span>, <span class="symbol">limit:</span> <span class="number">5</span>, <span class="symbol">period:</span> <span class="number">5</span>) <span class="keyword">do</span> <span class="params">|req|</span></div><div class="line">    req.ip</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="comment"># Send the following response to throttled clients</span></div><div class="line">  <span class="keyword">self</span>.throttled_response = -&gt;(env) &#123;</div><div class="line">    retry_after = (env[<span class="string">'rack.attack.match_data'</span>] <span class="params">||</span> &#123;&#125;)[<span class="symbol">:period</span>]</div><div class="line">    [</div><div class="line">      <span class="number">429</span>,</div><div class="line">      &#123;<span class="string">'Content-Type'</span> =&gt; <span class="string">'application/json'</span>, <span class="string">'Retry-After'</span> =&gt; retry_after.to_s&#125;,</div><div class="line">      [&#123;<span class="symbol">error:</span> <span class="string">"Throttle limit reached. Retry later."</span>&#125;.to_json]</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<h3 id="API用户验证"><a href="#API用户验证" class="headerlink" title="API用户验证"></a>API用户验证</h3><p>api项目应该是无状态的，应当尽量避免使用cookie或session</p>
+<p>A good way of authenticating API requests is using HTTP token based authentication, which involves clients including a API key of some sort in the HTTP Authorization header of each request, like so:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Authorization: Token token=&quot;WCZZYjnOQFUYfJIN2ShH1iD24UHo58A6TI&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ApplicationController</span> &lt; ActionController::Base</span></div><div class="line">  <span class="keyword">include</span> ActionController::HttpAuthentication::Token::ControllerMethods</div><div class="line"></div><div class="line">  <span class="comment"># Add a before_action to authenticate all requests.</span></div><div class="line">  <span class="comment"># Move this to subclassed controllers if you only</span></div><div class="line">  <span class="comment"># want to authenticate certain methods.</span></div><div class="line">  before_action <span class="symbol">:authenticate</span></div><div class="line"></div><div class="line">  protected</div><div class="line"></div><div class="line">  <span class="comment"># Authenticate the user with token based authentication</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">authenticate</span></span></div><div class="line">    authenticate_token <span class="params">||</span> render_unauthorized</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">authenticate_token</span></span></div><div class="line">    authenticate_with_http_token <span class="keyword">do</span> <span class="params">|token, options|</span></div><div class="line">      @current_user = User.find_by(<span class="symbol">api_key:</span> token)</div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">render_unauthorized</span><span class="params">(realm = <span class="string">"Application"</span>)</span></span></div><div class="line">    <span class="keyword">self</span>.headers[<span class="string">"WWW-Authenticate"</span>] = <span class="string">%(Token realm="<span class="subst">#&#123;realm.gsub(<span class="regexp">/"/</span>, <span class="string">""</span>)&#125;</span>")</span></div><div class="line">    render <span class="symbol">json:</span> <span class="string">'Bad credentials'</span>, <span class="symbol">status:</span> <span class="symbol">:unauthorized</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>作者: </span>
+      <span>王志永</span>
+    </p>
+    <p class="copyright-item">
+      <span>来源: </span>
+      <a href="http://yoursite.com">http://yoursite.com</a>
+    </p>
+    <p class="copyright-item">
+      <span>链接: </span>
+      <a href="http://yoursite.com/2017/06/13/RailsAPI项目创建步骤/">http://yoursite.com/2017/06/13/RailsAPI项目创建步骤/</a>
+    </p>
+
+    <p class="copyright-item lincese">
+      
+      本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+    </p>
+  </div>
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/image/reward/wechat.png" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/image/reward/alipay.png" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/rails/">rails</a>
+            
+              <a href="/tags/rails-api/">rails api</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/06/13/RailsEngine简介/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Rails Engine简介</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">王志永</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+  
+  
+
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.4.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.4.x"></script>
+
+    
+  </body>
+</html>

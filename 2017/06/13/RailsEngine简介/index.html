@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Rails Engine简介"/>
+
+
+
+
+  <meta name="keywords" content="rails,rails engine," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.4.x" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/06/13/RailsEngine简介/"/>
+
+
+<meta name="description" content="Rails Engine简介">
+<meta name="keywords" content="rails,rails engine">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rails Engine简介">
+<meta property="og:url" content="http://yoursite.com/2017/06/13/RailsEngine简介/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="Rails Engine简介">
+<meta property="og:updated_time" content="2017-06-13T07:14:51.295Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rails Engine简介">
+<meta name="twitter:description" content="Rails Engine简介">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
+
+
+
+
+
+
+
+<script>
+  var CONFIG = {
+    search: false,
+    searchPath: "/search.xml",
+    fancybox: false,
+    toc: true,
+  }
+</script>
+
+
+
+
+  
+
+
+
+    <title> Rails Engine简介 · 我的博客 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">我的博客</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">我的博客</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Rails Engine简介
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          Jun 13, 2017
+        </span>
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Rails-Engine简介"><span class="toc-text">Rails Engine简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#生成引擎"><span class="toc-text">生成引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#项目目录"><span class="toc-text">项目目录</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#挂载引擎"><span class="toc-text">挂载引擎</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用应用提供的类"><span class="toc-text">使用应用提供的类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用应用提供的模型-硬编码"><span class="toc-text">使用应用提供的模型-硬编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用应用提供的模型-配置化"><span class="toc-text">使用应用提供的模型-配置化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#继承应用的ApplicationController"><span class="toc-text">继承应用的ApplicationController</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引擎的配置"><span class="toc-text">引擎的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引擎独立数据源"><span class="toc-text">引擎独立数据源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考项目"><span class="toc-text">参考项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文档"><span class="toc-text">参考文档</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <h2 id="Rails-Engine简介"><a href="#Rails-Engine简介" class="headerlink" title="Rails Engine简介"></a>Rails Engine简介</h2><p>当出现同一个功能模块需要被多个Rails项目使用时，Rails引擎就是一个很好的选择。</p>
+<p>引擎可以看作为宿主应用提供附加功能的微型应用。实际上Rails应用只不过是<strong>加强版</strong>的引擎。<code>Rails::Application</code>类从<code>Rails::Engine</code>类继承了大量的行为。</p>
+<h3 id="生成引擎"><a href="#生成引擎" class="headerlink" title="生成引擎"></a>生成引擎</h3><pre><code>rails plugin new blorgh -d mysql --mountable  
+#--mountable: 生成*可挂载*和具有独立命名空间的引擎
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">rails plugin new APP_PATH [options] </div><div class="line">Options:</div><div class="line">  -m:Path to some plugin template (can be a filesystem path or URL)</div><div class="line">  <span class="_">-d</span>:Preconfigure <span class="keyword">for</span> selected database (options: mysql/oracle/postgresql/sqlite3/frontbase/ibm_db/sqlserver/jdbcmysql/jdbcsqlite3/jdbcpostgresql/jdbc)</div><div class="line">  -j:Preconfigure <span class="keyword">for</span> selected JavaScript library</div><div class="line">  --full:Generate a rails engine with bundled Rails application <span class="keyword">for</span> testing</div><div class="line">  --mountable:Generate mountable isolated application</div><div class="line">  --api:Generate a smaller stack <span class="keyword">for</span> API application plugins</div></pre></td></tr></table></figure>
+<h4 id="项目目录"><a href="#项目目录" class="headerlink" title="项目目录"></a>项目目录</h4><ul>
+<li>app目录树</li>
+<li>config/routes.rb</li>
+<li>lib/blorgh/engine.rb, 相当于 Rails 应用的 config/application.rb</li>
+<li>静态资源文件的清单文件( application.js 和 application.css )</li>
+<li>具有独立命名空间的 ApplicationController</li>
+<li>具有独立命名空间的 ApplicationHelper</li>
+<li>引擎的布局视图模板</li>
+</ul>
+<h3 id="挂载引擎"><a href="#挂载引擎" class="headerlink" title="挂载引擎"></a>挂载引擎</h3><p>在Rails应用的Gemfile中添加下面的代码，可以把引擎挂载到应用中:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem &apos;blorgh&apos;,path: &apos;../blorgh&apos;</div></pre></td></tr></table></figure></p>
+<p>通过在Gemfile中添加gem,Bundler将加载此gem。并解析其中的blorgh.gemspec文件，并加载lib/blorgh.rb文件。blorgh.rb文件将加载lib/<br>blorgh/engine.rb文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">module Blorgh</div><div class="line">   class Engine &lt; ::Rails::Engine</div><div class="line">   	isolate_namespace Blorgh</div><div class="line">   end</div><div class="line"> end</div></pre></td></tr></table></figure>
+<p>engine.rb文件定义了引擎的基类，通过继承Rails::Engine类，blorgh gem告知Rails在指定的路径上有一个引擎，Rails会把该引擎正确挂载到应用中，并执行相关任务，例如把app文件夹添加到模型、邮件和视图的加载路径上。</p>
+<p><code>isolate_namespace</code> 可以把引擎的控制器、模型、路由和其他组件隔离到各自的命名空间中。要是没有这个方法，引擎的组件就可能<em>泄露</em>到应用中。例如在未调用<code>isolate_namespace</code>方法的情况下，引擎的辅助方法会被包含到应用的控制器中。</p>
+<p>要想在应用中访问引擎的功能，需要在应用的config/routes.rb文件中挂载该引擎:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mount Blorgh::Engine,at: <span class="string">"/blog"</span></div></pre></td></tr></table></figure></p>
+<h2 id="使用应用提供的类"><a href="#使用应用提供的类" class="headerlink" title="使用应用提供的类"></a>使用应用提供的类</h2><h3 id="使用应用提供的模型-硬编码"><a href="#使用应用提供的模型-硬编码" class="headerlink" title="使用应用提供的模型-硬编码"></a>使用应用提供的模型-硬编码</h3><p>应用中用户类为User：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">attr_accessor</span> <span class="symbol">:author_name</span></div><div class="line">belongs_to <span class="symbol">:author</span>, <span class="symbol">class_name:</span> <span class="string">"User"</span></div><div class="line"></div><div class="line">before_validation <span class="symbol">:set_author</span></div><div class="line">private</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_author</span></span></div><div class="line">        <span class="keyword">self</span>.author = User.find_or_create_by(<span class="symbol">name:</span> author_name)</div><div class="line">    <span class="keyword">end</span></div></pre></td></tr></table></figure>
+<h3 id="使用应用提供的模型-配置化"><a href="#使用应用提供的模型-配置化" class="headerlink" title="使用应用提供的模型-配置化"></a>使用应用提供的模型-配置化</h3><p>在应用中用户类可能是User,也可能是Person或其他类，因此这个用户类最好是可配置的。为此，需要在引擎中通过author_class选项指定所使用的应用中的用户类。</p>
+<p>lib/blorgh.rb:<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mattr_accessor <span class="symbol">:author_class</span></div></pre></td></tr></table></figure></p>
+<p><code>mattr_accessor</code> 方法的工作原理与 <code>attr_accessor</code> 和 <code>cattr_accessor</code> 方法类似,其作用是根据指定名称为模块提供设值方法和读值方法。使用时直接调用 Blorgh.author_class 方法即可。</p>
+<p>修改关联:<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">belongs_to <span class="symbol">:author</span>, <span class="symbol">class_name:</span> Blorgh.author_class</div><div class="line">   </div><div class="line">   <span class="keyword">self</span>.author = Blorgh.author_class.constantize.find_or_create_by(<span class="symbol">name:</span> author_name)</div></pre></td></tr></table></figure></p>
+<p>在安装引擎的应用中,config/initializers/blorgh.rb:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Blorgh.author_class = &quot;User&quot;</div></pre></td></tr></table></figure></p>
+<h3 id="继承应用的ApplicationController"><a href="#继承应用的ApplicationController" class="headerlink" title="继承应用的ApplicationController"></a>继承应用的ApplicationController</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">Blorgh</span></span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ApplicationController</span> &lt; ::<span class="title">ApplicationController</span></span></div><div class="line">    <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<h3 id="引擎的配置"><a href="#引擎的配置" class="headerlink" title="引擎的配置"></a>引擎的配置</h3><p>和一般的应用一样，都是在config/initializers中进行配置。</p>
+<p>引擎的区域设置也和应用相同，只需要把区域配置文件放在引擎的 config/locales 文件夹中即可。</p>
+<h3 id="引擎独立数据源"><a href="#引擎独立数据源" class="headerlink" title="引擎独立数据源"></a>引擎独立数据源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">module Blorgh</div><div class="line">  class BaseModel &lt; ActiveRecord::Base</div><div class="line">    self.abstract_class = true</div><div class="line">    establish_connection &quot;blorgh_#&#123;Rails.env&#125;&quot;.to_sym</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
+<h3 id="参考项目"><a href="#参考项目" class="headerlink" title="参考项目"></a>参考项目</h3><ul>
+<li><a href="https://github.com/plataformatec/devise" target="_blank" rel="external">devise</a>: 提供身份验证</li>
+<li><a href="https://github.com/thredded/thredded" target="_blank" rel="external">thredded</a>：提供论坛功能</li>
+<li><a href="https://github.com/spree/spree" target="_blank" rel="external">spree</a>:提供电子商务功能</li>
+<li><a href="https://github.com/refinery/refinerycms" target="_blank" rel="external">refinerycms</a>：提供CMS功能</li>
+<li><a href="https://github.com/rails-engine/homeland" target="_blank" rel="external">homeland</a>:提供论坛功能</li>
+<li><a href="https://github.com/rails-engine" target="_blank" rel="external">rails-engine</a></li>
+</ul>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ul>
+<li><a href="http://www.jianshu.com/p/c60aafdb2a85" target="_blank" rel="external">Rails 引擎初探</a></li>
+<li><a href="https://medium.com/ruby-on-rails/patterns-for-successful-rails-engines-a7dae3db6921" target="_blank" rel="external">Patterns for Successful Rails Engines</a></li>
+<li><a href="https://www.bignerdranch.com/blog/intro-to-rails-engines/" target="_blank" rel="external">Intro to Rails Engines</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>作者: </span>
+      <span>王志永</span>
+    </p>
+    <p class="copyright-item">
+      <span>来源: </span>
+      <a href="http://yoursite.com">http://yoursite.com</a>
+    </p>
+    <p class="copyright-item">
+      <span>链接: </span>
+      <a href="http://yoursite.com/2017/06/13/RailsEngine简介/">http://yoursite.com/2017/06/13/RailsEngine简介/</a>
+    </p>
+
+    <p class="copyright-item lincese">
+      
+      本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+    </p>
+  </div>
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/image/reward/wechat.png" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/image/reward/alipay.png" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/rails/">rails</a>
+            
+              <a href="/tags/rails-engine/">rails engine</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/05/26/Docker入门-1/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Docker入门-1</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2017/06/13/RailsAPI项目创建步骤/">
+        <span class="next-text nav-default">Rails API项目创建步骤</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">王志永</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+  
+  
+
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.4.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.4.x"></script>
+
+    
+  </body>
+</html>

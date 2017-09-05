@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="数据隔离方案"/>
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.4.x" />
+
+
+
+<link rel="canonical" href="https://jimolucy.github.io/2017/09/05/数据隔离方案/"/>
+
+
+<meta name="description" content="数据隔离方案">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据隔离方案">
+<meta property="og:url" content="https://jimolucy.github.io/2017/09/05/数据隔离方案/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="数据隔离方案">
+<meta property="og:updated_time" content="2017-09-05T15:43:37.745Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据隔离方案">
+<meta name="twitter:description" content="数据隔离方案">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
+
+
+
+
+
+
+
+<script>
+  var CONFIG = {
+    search: false,
+    searchPath: "/search.xml",
+    fancybox: false,
+    toc: true,
+  }
+</script>
+
+
+
+
+  
+
+
+
+    <title> 数据隔离方案 · 我的博客 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">我的博客</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">我的博客</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          数据隔离方案
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          Sep 5, 2017
+        </span>
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#多租户数据隔离方案"><span class="toc-text">多租户数据隔离方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#独立数据库实例"><span class="toc-text">独立数据库实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#共享数据库实例-独立Schema"><span class="toc-text">共享数据库实例 独立Schema</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#共享数据库实例-共享Schema"><span class="toc-text">共享数据库实例 共享Schema</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择因素"><span class="toc-text">选择因素</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <h2 id="多租户数据隔离方案"><a href="#多租户数据隔离方案" class="headerlink" title="多租户数据隔离方案"></a>多租户数据隔离方案</h2><p>多租户数据隔离通常有以下三种方案：</p>
+<ul>
+<li>独立数据库实例</li>
+<li>共享数据库实例 独立Schema</li>
+<li>共享数据库实例 共享Schema </li>
+</ul>
+<h3 id="独立数据库实例"><a href="#独立数据库实例" class="headerlink" title="独立数据库实例"></a>独立数据库实例</h3><p>独立数据库是一个租户独享一个数据实例。租户之间的数据物理不可见。</p>
+<ul>
+<li><p>优点</p>
+<p> <strong>方便对数据模型进行扩展，隔离级别高，安全性高</strong></p>
+</li>
+<li><p>缺点</p>
+<p><strong>硬件成本及运维成本高</strong></p>
+</li>
+</ul>
+<h3 id="共享数据库实例-独立Schema"><a href="#共享数据库实例-独立Schema" class="headerlink" title="共享数据库实例 独立Schema"></a>共享数据库实例 独立Schema</h3><p>多个租户共享数据库，但是每个租户一个Schema,即每个租户一个数据库用户</p>
+<ul>
+<li><p>优点</p>
+<p><strong>逻辑上的数据隔离，每个数据库可以支持相当多的租户数量</strong></p>
+</li>
+<li><p>缺点</p>
+<p><strong>数据库出问题时，影响的租户比较多</strong></p>
+</li>
+</ul>
+<blockquote>
+<p> 阿里云RDS mysql5.5/5.6版本限制： 每个实例最多可创建500个数据库和500个账号</p>
+<p> 阿里云RDS mysql5.7版本： 每个实例可创建无数个数据库和无数个普通账号 </p>
+<p> 阿里云RDS有提供创建数据库，创建账号API</p>
+</blockquote>
+<h3 id="共享数据库实例-共享Schema"><a href="#共享数据库实例-共享Schema" class="headerlink" title="共享数据库实例 共享Schema"></a>共享数据库实例 共享Schema</h3><p><strong>两种方式:</strong></p>
+<p>  a.多租户共享表: 依靠<code>tenant_id</code>来隔离租户数据</p>
+<p>  b.一租户一表 通过表名<code>prefix</code>或<code>suffix</code>来隔离租户表</p>
+<ul>
+<li><p>优点</p>
+<p> <strong>成本低，支出的租户数多</strong></p>
+</li>
+<li><p>缺点</p>
+<p> <strong>隔离级别低，安全性低，数据库出问题影响范围大，单租户数据备份恢复麻烦</strong></p>
+</li>
+</ul>
+<h3 id="选择因素"><a href="#选择因素" class="headerlink" title="选择因素"></a>选择因素</h3><ol>
+<li>成本</li>
+<li>安全</li>
+<li>支持的租户数</li>
+<li>技术实现</li>
+</ol>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>作者: </span>
+      <span>王志永</span>
+    </p>
+    <p class="copyright-item">
+      <span>来源: </span>
+      <a href="https://jimolucy.github.io">https://jimolucy.github.io</a>
+    </p>
+    <p class="copyright-item">
+      <span>链接: </span>
+      <a href="https://jimolucy.github.io/2017/09/05/数据隔离方案/">https://jimolucy.github.io/2017/09/05/数据隔离方案/</a>
+    </p>
+
+    <p class="copyright-item lincese">
+      
+      
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/07/25/Linux初始化init系统/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Linux初始化init系统</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:362408963@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">王志永</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+  
+  
+
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.4.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.4.x"></script>
+
+    
+  </body>
+</html>

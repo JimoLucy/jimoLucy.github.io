@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="TypeScript学习-1.基本类型"/>
+
+
+
+
+  <meta name="keywords" content="TypeScript," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.4.x" />
+
+
+
+<link rel="canonical" href="https://jimolucy.github.io/2017/09/26/TypeScript学习-1.基本类型/"/>
+
+
+<meta name="description" content="TypeScript学习-1.基本类型">
+<meta name="keywords" content="TypeScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript学习-1.基本类型">
+<meta property="og:url" content="https://jimolucy.github.io/2017/09/26/TypeScript学习-1.基本类型/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="TypeScript学习-1.基本类型">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-26T14:11:57.534Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TypeScript学习-1.基本类型">
+<meta name="twitter:description" content="TypeScript学习-1.基本类型">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
+
+
+
+
+
+
+
+<script>
+  var CONFIG = {
+    search: false,
+    searchPath: "/search.xml",
+    fancybox: false,
+    toc: true,
+  }
+</script>
+
+
+
+
+  
+
+
+
+    <title> TypeScript学习-1.基本类型 · 我的博客 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">我的博客</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">我的博客</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          TypeScript学习-1.基本类型
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          Sep 26, 2017
+        </span>
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#TypeScript学习-1-基础"><span class="toc-text">TypeScript学习-1.基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本类型"><span class="toc-text">基本类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#布尔值-boolean"><span class="toc-text">布尔值 boolean</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数字-number"><span class="toc-text">数字 number</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串-string"><span class="toc-text">字符串 string</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数组"><span class="toc-text">数组 []</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#元组-Tuple"><span class="toc-text">元组 Tuple</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#枚举"><span class="toc-text">枚举</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#any"><span class="toc-text">any</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#void"><span class="toc-text">void</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null-和-undefined"><span class="toc-text">null 和 undefined</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#never"><span class="toc-text">never</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类型断言"><span class="toc-text">类型断言</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量声明"><span class="toc-text">变量声明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#var声明"><span class="toc-text">var声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#let声明"><span class="toc-text">let声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#const声明"><span class="toc-text">const声明</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <h2 id="TypeScript学习-1-基础"><a href="#TypeScript学习-1-基础" class="headerlink" title="TypeScript学习-1.基础"></a>TypeScript学习-1.基础</h2><h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3><h4 id="布尔值-boolean"><a href="#布尔值-boolean" class="headerlink" title="布尔值 boolean"></a>布尔值 boolean</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> isDone: <span class="built_in">boolean</span> = <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="数字-number"><a href="#数字-number" class="headerlink" title="数字 number"></a>数字 number</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let decLiteral: number = 6;</span><br><span class="line">let hexLiteral: number = 0xf00d;</span><br><span class="line">let binaryLiteral: number = 0b1010;</span><br><span class="line">let octalLiteral: number = 0o744;</span><br></pre></td></tr></table></figure>
+<h4 id="字符串-string"><a href="#字符串-string" class="headerlink" title="字符串 string"></a>字符串 string</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let name: string = &apos;bob&apos;;</span><br><span class="line">name = &quot;smith&quot;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>字符串插值 <code>${ expr }</code>,此时字符串被`包围</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let sentence: string = `Hello,my name is $&#123; name &#125;`</span><br></pre></td></tr></table></figure>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组 []"></a>数组 []</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let list: number[] = [1,2,3];</span><br><span class="line">let list: Array&lt;number&gt; = [1,2,3];</span><br></pre></td></tr></table></figure>
+<h4 id="元组-Tuple"><a href="#元组-Tuple" class="headerlink" title="元组 Tuple"></a>元组 Tuple</h4><blockquote>
+<p> 元组类型允许表示一个已知元素数量和类型的数组，各元素的类型不必相同</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let x: [string,number];</span><br><span class="line">x = [&apos;hello&apos;,10]</span><br></pre></td></tr></table></figure>
+<h4 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enum Color &#123;RED,GREEN,BLUE&#125;</span><br><span class="line">let c: Color = Color.GREEN;</span><br><span class="line"></span><br><span class="line">enum Color &#123;RED = 1, GREEN = 2,BLUE = 4&#125;</span><br><span class="line">let colorName: string = Color[2]</span><br></pre></td></tr></table></figure>
+<h4 id="any"><a href="#any" class="headerlink" title="any"></a>any</h4><h4 id="void"><a href="#void" class="headerlink" title="void"></a>void</h4><h4 id="null-和-undefined"><a href="#null-和-undefined" class="headerlink" title="null 和 undefined"></a>null 和 undefined</h4><h4 id="never"><a href="#never" class="headerlink" title="never"></a>never</h4><h4 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h4><h3 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h3><h4 id="var声明"><a href="#var声明" class="headerlink" title="var声明"></a>var声明</h4><h4 id="let声明"><a href="#let声明" class="headerlink" title="let声明"></a>let声明</h4><h4 id="const声明"><a href="#const声明" class="headerlink" title="const声明"></a>const声明</h4>
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>作者: </span>
+      <span>王志永</span>
+    </p>
+    <p class="copyright-item">
+      <span>来源: </span>
+      <a href="https://jimolucy.github.io">https://jimolucy.github.io</a>
+    </p>
+    <p class="copyright-item">
+      <span>链接: </span>
+      <a href="https://jimolucy.github.io/2017/09/26/TypeScript学习-1.基本类型/">https://jimolucy.github.io/2017/09/26/TypeScript学习-1.基本类型/</a>
+    </p>
+
+    <p class="copyright-item lincese">
+      
+      
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/TypeScript/">TypeScript</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/04/01/JAVA位运算整理/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">JAVA位运算整理</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2017/09/21/MySublimeSettings/">
+        <span class="next-text nav-default">MySublimeSettings</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:362408963@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2018
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">王志永</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+  
+  
+
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.4.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.4.x"></script>
+
+    
+  </body>
+</html>

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="JAVA位运算整理"/>
+
+
+
+
+  <meta name="keywords" content="java," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.4.x" />
+
+
+
+<link rel="canonical" href="https://jimolucy.github.io/2018/04/01/JAVA位运算整理/"/>
+
+
+<meta name="description" content="JAVA位运算整理">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA位运算整理">
+<meta property="og:url" content="https://jimolucy.github.io/2018/04/01/JAVA位运算整理/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="JAVA位运算整理">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-01T14:43:37.342Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA位运算整理">
+<meta name="twitter:description" content="JAVA位运算整理">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
+
+
+
+
+
+
+
+<script>
+  var CONFIG = {
+    search: false,
+    searchPath: "/search.xml",
+    fancybox: false,
+    toc: true,
+  }
+</script>
+
+
+
+
+  
+
+
+
+    <title> JAVA位运算整理 · 我的博客 </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">我的博客</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">我的博客</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          JAVA位运算整理
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          Apr 1, 2018
+        </span>
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JAVA位运算整理"><span class="toc-text">JAVA位运算整理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#位操作概述"><span class="toc-text">位操作概述</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#二进制原码、反码、补码"><span class="toc-text">二进制原码、反码、补码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#异或操作"><span class="toc-text">异或操作</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#位操作符总结"><span class="toc-text">位操作符总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#操作符优先级"><span class="toc-text">操作符优先级</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#特殊的二进制数"><span class="toc-text">特殊的二进制数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#特殊技巧"><span class="toc-text">特殊技巧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <h2 id="JAVA位运算整理"><a href="#JAVA位运算整理" class="headerlink" title="JAVA位运算整理"></a>JAVA位运算整理</h2><h4 id="位操作概述"><a href="#位操作概述" class="headerlink" title="位操作概述"></a>位操作概述</h4><p>java中位操作有 与(&amp;)、或(|)、异或(^)、非(~)、左移(&lt;&lt;)、算术右移(&gt;&gt;)、逻辑右移(&gt;&gt;&gt;)操作。</p>
+<ul>
+<li>按位与操作: 对应位均为1，则结果为1.否则为0</li>
+<li>按位或操作: 对应为均为0，则结果为0.否则为1</li>
+<li>异或操作: 又称不进位加法操作，是指对应位<code>是不是不一样</code>,对应位相同为0，不同为1</li>
+<li>按位非操作: 一元操作符，每一位取反。</li>
+<li>左移操作符(A&lt;&lt;B): 将A的二进制整体向左移B位，不足位补0</li>
+<li>算术右移(A&gt;&gt;B):将A的二进制每一位向右移B位，左边不足的补符号位的数</li>
+<li>逻辑右移(A&gt;&gt;&gt;B): 将A的二进制每一位向右移B位，左边不足的补0</li>
+</ul>
+<h5 id="二进制原码、反码、补码"><a href="#二进制原码、反码、补码" class="headerlink" title="二进制原码、反码、补码"></a>二进制原码、反码、补码</h5><p>二进制数在内存中以补码形式存储。</p>
+<ul>
+<li>反码: 正数的反码与原码相同。负数的反码为原码除符号位外其余为取反</li>
+<li>补码: 正数的补码与原码相同。负数的补码为其反码+1</li>
+</ul>
+<p>补码转源码:<br>高位为0 为正数，源码即为补码</p>
+<p>高位为1为负数，源码为负数的补码+1</p>
+<h5 id="异或操作"><a href="#异或操作" class="headerlink" title="异或操作"></a>异或操作</h5><p>数值两两相同为否，数值不同为真。 c/java语言中写作A^B,也被称为不进位加法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 ^ 1 = 0</span><br><span class="line">1 ^ 0 = 1</span><br><span class="line">0 ^ 0 = 0</span><br><span class="line">0 ^ 1 = 1</span><br></pre></td></tr></table></figure></p>
+<p>性质:</p>
+<ul>
+<li>交换律: A^B = B^A</li>
+<li>结合律：A^(B^C) = (A^B)^C</li>
+<li>恒等律: A^0 = A</li>
+<li>归零律: A^A = 0</li>
+<li>自反律：A^B^B = A^0 = A       </li>
+</ul>
+<h4 id="位操作符总结"><a href="#位操作符总结" class="headerlink" title="位操作符总结"></a>位操作符总结</h4><ul>
+<li>与0(&amp;)结果为0 与1(&amp;)结果为原值</li>
+<li>与0(|)结果为原值 与1(|)结果为1 </li>
+<li>与0(^)结果为原值 与1(^)是相反值</li>
+<li>0与其他值(| ^)均为原值，与其他值&amp;均为0</li>
+<li>1与其他值(&amp;)均为原值，与其他值(|)均为1,与其他值(^)为相反值</li>
+<li>a^b结果中为0的说明该位二者无差别，为1的说明该位有差别</li>
+<li>相等值&amp;为原值，相等值|为原值 相等值^为0</li>
+<li>不等值&amp;为0，不等值|为1，不等值^为1</li>
+</ul>
+<h4 id="操作符优先级"><a href="#操作符优先级" class="headerlink" title="操作符优先级"></a>操作符优先级</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">类别</th>
+<th style="text-align:right">操作符</th>
+<th style="text-align:center">关联性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">后缀</td>
+<td style="text-align:right">() [] . (点操作符)</td>
+<td style="text-align:center">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">一元</td>
+<td style="text-align:right">+ + - ！〜</td>
+<td style="text-align:center">从右到左</td>
+</tr>
+<tr>
+<td style="text-align:left">乘性</td>
+<td style="text-align:right">* /％</td>
+<td style="text-align:center">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">加性</td>
+<td style="text-align:right">+ -</td>
+<td style="text-align:center">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">移位</td>
+<td style="text-align:right">&gt;&gt; &gt;&gt;&gt;  &lt;&lt;</td>
+<td style="text-align:center">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">关系</td>
+<td style="text-align:right">&gt;&gt; = &lt;&lt; =</td>
+<td style="text-align:center">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">相等</td>
+<td style="text-align:right">==  !=</td>
+<td style="text-align:center">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">按位与</td>
+<td style="text-align:right">＆</td>
+<td style="text-align:center">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">按位异或</td>
+<td style="text-align:right">^</td>
+<td style="text-align:center">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">按位或</td>
+<td style="text-align:right">按位或</td>
+<td style="text-align:center">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">逻辑与</td>
+<td style="text-align:right">&amp;&amp;</td>
+<td style="text-align:center">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">逻辑或</td>
+<td style="text-align:right">逻辑或</td>
+<td style="text-align:center">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">条件</td>
+<td style="text-align:right">？：</td>
+<td style="text-align:center">右到左</td>
+</tr>
+<tr>
+<td style="text-align:left">赋值</td>
+<td style="text-align:right">= += …</td>
+<td style="text-align:center">右到左</td>
+</tr>
+<tr>
+<td style="text-align:left">逗号</td>
+<td style="text-align:right">,</td>
+<td style="text-align:center">左到右</td>
+</tr>
+</tbody>
+</table>
+<h4 id="特殊的二进制数"><a href="#特殊的二进制数" class="headerlink" title="特殊的二进制数"></a>特殊的二进制数</h4><ul>
+<li>1 = 0b 0000 0000 0000 0000  0000 0000 0000 0001</li>
+<li>-1 = 0b 1111 1111 1111 1111 1111 1111 1111 1111</li>
+<li>16 = 0b 0000 0000 0000 0000  0000 0000 0001 0000</li>
+<li>15 = 0xF = 0b 0000 0000 0000 0000  0000 0000 0000 1111</li>
+<li>256 = 1&lt;&lt;8 = 0b 0000 0000 0000 0000 0000 0001 0000 0000</li>
+<li>255 = 0xFF = (1 &lt;&lt; 8) - 1 = 0b 0000 0000 0000 0000 0000 0000 1111 1111</li>
+<li>~(1&lt;&lt;8) == 0b 1111 1111 1111 1111 1111 1110 1111 1111</li>
+</ul>
+<h4 id="特殊技巧"><a href="#特殊技巧" class="headerlink" title="特殊技巧"></a>特殊技巧</h4><ul>
+<li>a^b结果中为0的说明该位二者无差别，为1的说明该位有差别</li>
+<li>x &amp; (x - 1)用于将x的最后一位1变为0:  x&amp;(x-1) == 0 说明x中只有一个1，那么x为2的幂</li>
+<li>x &amp;(-x): 最后一位1的位置</li>
+<li>判断奇偶:二进制最后一位为1为奇数，为0则为偶数。x&amp;1==0偶数</li>
+<li>变换符号:   取反+1:  ~a + 1</li>
+<li>求绝对值:  a &gt;&gt; 31 == -1 则a为负数 |a| = ~a+1 ,a &gt;&gt; 31 == 0为正数 |a| = a</li>
+<li>将 x 的第 n 位置1，可以通过 x |= (1 &lt;&lt; n) 来实现</li>
+<li>将 x 的第 n 位清0，可以通过 x &amp;= ~(1 &lt;&lt; n) 来实现</li>
+<li>取出 x 的第 n 位的值，可以通过 (x &gt;&gt; n) &amp; 1 来实现</li>
+<li>交换a，b的值：a = a ^ b; b = a ^ b; a = a ^ b;</li>
+<li>快速比较a,b是否相等： a ^ b == 0</li>
+<li>特定位翻转:  翻转<code>10100001</code>第六位:  <code>10100001</code> ^ <code>00100000</code></li>
+<li>判断二进制数中1的数量是奇数还是偶数:  <code>10100001</code>: <code>1^0^1^0^0^0^0^1</code> 结果为1 表示奇数个1 ，为0就是偶数个1</li>
+<li>校验和恢复主要利用的了异或的特性：IF a ^ b = c THEN a ^ c = b 应用：一个很好的应用实例是RAID5，使用3块磁盘（A、B、C）组成RAID5阵列，当用户写数据时，将数据分成两部分，分别写到磁盘A和磁盘B，A ^ B的结果写到磁盘C；当读取A的数据时，通过B ^ C可以对A的数据做校验，当A盘出错时，通过B ^ C也可以恢复A盘的数据。</li>
+<li>一个整型数组里除了N个数字之外，其他的数字都出现了两次，找出这N个数字:<pre><code>N 为1时:  [a,b,c,d,c,d,b] : a^b^c^d^c^d^b == a
+N 为2时:  c = a^b 
+                  通过d = c &amp; ~(c-1) 找到c中第一个为1的的数，说明a,b在此位的值不同。根据这个特点，找出所有这个位数上为1的数(x &amp; d &gt; 0) 进行异或，得到的就是a或者b,然后列外的值为 c ^ a
+</code></pre></li>
+</ul>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">功能</th>
+<th style="text-align:right">示例</th>
+<th>位运算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">去掉最后一位</td>
+<td style="text-align:right">(101101-&gt;10110)</td>
+<td>x &gt;&gt; 1</td>
+</tr>
+<tr>
+<td style="text-align:left">在最后加一个0</td>
+<td style="text-align:right">(101101-&gt;1011010)</td>
+<td>x &lt;&lt; 1</td>
+</tr>
+<tr>
+<td style="text-align:left">在最后加一个1</td>
+<td style="text-align:right">(101101-&gt;1011011)</td>
+<td>x&lt;&lt;1 + 1</td>
+</tr>
+<tr>
+<td style="text-align:left">把最后一位变成1</td>
+<td style="text-align:right">(101100-&gt;101101)</td>
+<td>x</td>
+<td>1</td>
+</tr>
+<tr>
+<td style="text-align:left">把最后一位变成0</td>
+<td style="text-align:right">(101101-&gt;101100)</td>
+<td>x &amp; ~1</td>
+</tr>
+<tr>
+<td style="text-align:left">最后一位取反</td>
+<td style="text-align:right">(101101-&gt;101100)</td>
+<td>x ^ 1</td>
+</tr>
+<tr>
+<td style="text-align:left">把右数第k位变成1</td>
+<td style="text-align:right">(101001-&gt;101101,k=3)</td>
+<td>x</td>
+<td>(1 &lt;&lt; (k-1))</td>
+</tr>
+<tr>
+<td style="text-align:left">把右数第k位变成0</td>
+<td style="text-align:right">(101101-&gt;101001,k=3)</td>
+<td>x &amp; ~(1 &lt;&lt;(k-1))</td>
+</tr>
+<tr>
+<td style="text-align:left">右数第k位取反</td>
+<td style="text-align:right">(101001-&gt;101101,k=3)</td>
+<td>x ^ (1 &lt;&lt; (k-1))</td>
+</tr>
+<tr>
+<td style="text-align:left">取末三位</td>
+<td style="text-align:right">(1101101-&gt;101)</td>
+<td>x &amp; (1&lt;&lt;k - 1)</td>
+</tr>
+<tr>
+<td style="text-align:left">取末k位</td>
+<td style="text-align:right">(1101101-&gt;1101,k=5)</td>
+<td>x &amp; (1&lt;&lt;k - 1)</td>
+</tr>
+<tr>
+<td style="text-align:left">取右数第k位</td>
+<td style="text-align:right">(1101101-&gt;1,k=4)</td>
+<td>x&gt;&gt;(k-1) &amp; 1</td>
+</tr>
+<tr>
+<td style="text-align:left">把末k位变成1</td>
+<td style="text-align:right">(101001-&gt;101111,k=4)</td>
+<td>x</td>
+<td>((1&lt;&lt;k) - 1)</td>
+</tr>
+<tr>
+<td style="text-align:left">末k位取反</td>
+<td style="text-align:right">(101001-&gt;100110,k=4)</td>
+<td>x ^ ((1 &lt;&lt; k) - 1)</td>
+</tr>
+<tr>
+<td style="text-align:left">把右边连续的1变成0</td>
+<td style="text-align:right">(100101111-&gt;100100000)</td>
+</tr>
+<tr>
+<td style="text-align:left">把右起第一个0变成1</td>
+<td style="text-align:right">(100101111-&gt;100111111)</td>
+</tr>
+<tr>
+<td style="text-align:left">把右边连续的0变成1</td>
+<td style="text-align:right">(11011000-&gt;11011111)</td>
+</tr>
+<tr>
+<td style="text-align:left">取右边连续的1</td>
+<td style="text-align:right">(100101111-&gt;1111)</td>
+<td>( x ^ (x+1)) &gt;&gt; 1</td>
+</tr>
+<tr>
+<td style="text-align:left">去掉右起第一个1的左边</td>
+<td style="text-align:right">(100101000-&gt;1000)</td>
+<td>x &amp; (x ^ (x - 1))</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>给出两个整数a和b, 求他们的和, 但不能使用 + 等数学运算符</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">a &amp; b就是a和b里都是1的那些位置，那么这些位置左边都应该有一个进位1，a &amp; b &lt;&lt; 1 就是进位的数值(a &amp; b的结果所有左移一位)。</span><br><span class="line">那么我们把不进位的结果和进位的结果加起来，就是实际中a + b的和。</span><br><span class="line">a + b = (a ^ b) + (a &amp; b &lt;&lt; 1)</span><br><span class="line">令a&apos; = a ^ b, b&apos; = (a &amp; b) &lt;&lt; 1 =&gt; a + b = (a ^ b) + (a &amp; b &lt;&lt; 1) = a&apos; + b&apos;</span><br><span class="line"></span><br><span class="line">然后反复迭代，这个过程是在二进制下模拟加法的运算过程，进位不可能一直持续，所以b最终会变为0，也就是没有需要进位的了，因此重复做上述操作就可以</span><br><span class="line">最终求得a + b的值</span><br><span class="line">*/</span><br><span class="line">class Solution &#123;</span><br><span class="line">    /*</span><br><span class="line">     * param a: The first integer</span><br><span class="line">     * param b: The second integer</span><br><span class="line">     * return: The sum of a and b</span><br><span class="line">     */</span><br><span class="line">    public int aplusb(int a, int b) &#123;</span><br><span class="line">        while (b != 0) &#123;</span><br><span class="line">            int _a = a ^ b;</span><br><span class="line">            int _b = (a &amp; b) &lt;&lt; 1;</span><br><span class="line">            a = _a;</span><br><span class="line">            b = _b;</span><br><span class="line">        &#125;</span><br><span class="line">        return a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://www.jiuzhang.com/tutorial/bit-manipulation" target="_blank" rel="noopener">位运算入门教程(密码:jiuzhang)</a></p>
+<p><a href="http://www.matrix67.com/blog/archives/263" target="_blank" rel="noopener">位运算简介及实用技巧1</a></p>
+<p><a href="http://www.matrix67.com/blog/archives/264" target="_blank" rel="noopener">位运算简介及实用技巧2</a></p>
+<p><a href="http://www.matrix67.com/blog/archives/266" target="_blank" rel="noopener">位运算简介及实用技巧3</a></p>
+<p><a href="http://www.matrix67.com/blog/archives/268" target="_blank" rel="noopener">位运算简介及实用技巧4</a></p>
+<p><a href="http://graphics.stanford.edu/~seander/bithacks.html#OperationCounting" target="_blank" rel="noopener">http://graphics.stanford.edu/~seander/bithacks.html#OperationCounting</a></p>
+<p><a href="https://www.lijinma.com/blog/2014/05/29/amazing-xor/" target="_blank" rel="noopener">https://www.lijinma.com/blog/2014/05/29/amazing-xor/</a></p>
+<p><a href="http://xxgblog.com/2013/09/15/java-bitmask/" target="_blank" rel="noopener">使用位运算设置权限</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2017/05/xor.html" target="_blank" rel="noopener">XOR加密简介</a></p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>作者: </span>
+      <span>王志永</span>
+    </p>
+    <p class="copyright-item">
+      <span>来源: </span>
+      <a href="https://jimolucy.github.io">https://jimolucy.github.io</a>
+    </p>
+    <p class="copyright-item">
+      <span>链接: </span>
+      <a href="https://jimolucy.github.io/2018/04/01/JAVA位运算整理/">https://jimolucy.github.io/2018/04/01/JAVA位运算整理/</a>
+    </p>
+
+    <p class="copyright-item lincese">
+      
+      
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/09/26/TypeScript学习-1.基本类型/">
+        <span class="next-text nav-default">TypeScript学习-1.基本类型</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:362408963@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2018
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">王志永</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+  
+  
+
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.4.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.4.x"></script>
+
+    
+  </body>
+</html>
